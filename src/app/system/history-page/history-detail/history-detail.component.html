@@ -1,0 +1,32 @@
+<div class="text-center" *ngIf="!isLoaded"><wfm-loader></wfm-loader></div>
+<div *ngIf="isLoaded" class="title-block">
+  <h3 class="title">
+    <a [routerLink]="['/system/history']"><i class="fa fa-arrow-left"></i></a>
+    {{eventModel.eventId}}
+    <span class="sparkline bar"></span>
+  </h3>
+</div>
+<section class="section">
+  <div class="row">
+    <div class="col-xs-6 col-xs-offset-3">
+      <div class="card" [ngClass]="className">
+        <div class="card-header">
+          <div class="header-block">
+            <p class="title">
+              <span >{{eventModel.eventType}}</span>
+            </p>
+          </div>
+        </div>
+        <div class="card-block">
+          <ul>
+            <li>Sum: <strong>{{eventModel.amount | number: '1.2'}}</strong></li>
+            <li>Category: <strong>{{eventModel.category['name']}}</strong></li>
+            <li>DEscription: <strong>{{eventModel.description}}</strong></li>
+          </ul>
+        </div>
+        <div class="card-footer">{{eventModel.date | wfmMoment: 'YYYY-MM-DD'}}</div>
+      </div>
+    </div>
+  </div>
+</section>
+
